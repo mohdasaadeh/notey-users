@@ -1,0 +1,23 @@
+{
+  "name": "notey-users",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^5.1.0",
+    "cross-env": "^7.0.3",
+    "debug": "4.1.x",
+    "fs-extra": "^9.1.0",
+    "js-yaml": "3.14.x",
+    "restify": "8.5.x",
+    "restify-clients": "2.6.x",
+    "sequelize": "^6.37.1",
+    "sqlite3": "^5.1.7"
+  }
+}
