@@ -2,9 +2,9 @@
   "name": "notey-users",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "user-server.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env DEBUG=users:* PORT=5858 SEQUELIZE_CONNECT=sequelize-sqlite.yaml node ./user-server.mjs"
   },
   "keywords": [],
   "author": "",
@@ -15,8 +15,8 @@
     "debug": "4.1.x",
     "fs-extra": "^9.1.0",
     "js-yaml": "3.14.x",
-    "restify": "8.5.x",
-    "restify-clients": "2.6.x",
+    "restify": "^11.1.0",
+    "restify-clients": "^4.2.0",
     "sequelize": "^6.37.1",
     "sqlite3": "^5.1.7"
   }
