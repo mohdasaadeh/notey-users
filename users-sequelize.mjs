@@ -7,7 +7,7 @@ import DBG from "debug";
 const log = DBG("users:model-users");
 const error = DBG("users:error");
 
-var sequlz;
+let sequlz;
 
 export class SQUser extends Sequelize.Model {}
 
