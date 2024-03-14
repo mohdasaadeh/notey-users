@@ -1,6 +1,7 @@
 import restify from "restify";
 import * as util from "util";
 import DBG from "debug";
+import { default as bcrypt } from "bcrypt";
 
 import {
   SQUser,
@@ -173,29 +174,41 @@ server.post("/password-check", (req, res, next) => {
       }).then((user) => {
         let checked;
 
+        console.log(user);
+
         if (!user) {
           checked = {
             check: false,
             username: req.params.username,
             message: "Could not find user",
           };
-        } else if (
-          user.username === req.params.username &&
-          user.password === req.params.password
-        ) {
-          checked = { check: true, username: user.username };
+
+          res.contentType = "json";
+          res.send(checked);
+
+          next(false);
         } else {
-          checked = {
-            check: false,
-            username: req.params.username,
-            message: "Incorrect password",
-          };
+          if (user.username === req.params.username) {
+            bcrypt
+              .compare(req.params.password, user.password)
+              .then((result) => {
+                if (result) {
+                  checked = { check: true, username: user.username };
+                } else {
+                  checked = {
+                    check: false,
+                    username: req.params.username,
+                    message: "Incorrect username or password",
+                  };
+                }
+
+                res.contentType = "json";
+                res.send(checked);
+
+                next(false);
+              });
+          }
         }
-
-        res.contentType = "json";
-        res.send(checked);
-
-        next(false);
       });
     })
     .catch((error) => {
