@@ -4,7 +4,8 @@
   "description": "",
   "main": "user-server.mjs",
   "scripts": {
-    "start": "cross-env DEBUG=users:* PORT=5858 SEQUELIZE_CONNECT=sequelize-sqlite.yaml node ./user-server.mjs"
+    "start": "cross-env DEBUG=users:* PORT=5858 SEQUELIZE_CONNECT=sequelize-sqlite.yaml node ./user-server.mjs",
+    "docker-build": "docker build -t svc-userauth ."
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "debug": "4.1.x",
     "fs-extra": "^9.1.0",
     "js-yaml": "3.14.x",
+    "mysql2": "^3.9.2",
     "restify": "^11.1.0",
     "restify-clients": "^4.2.0",
     "sequelize": "^6.37.1",
